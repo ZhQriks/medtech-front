@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import useScreen from "../../app/hooks/useScreen";
+import PermanentDrawerLeft from "../../components/layout/SideBar/SideBar"
+
 
 export default function Home() {
   const { isPhone, isTablet, isDesktop } = useScreen();
@@ -10,8 +12,6 @@ export default function Home() {
   const dispatch = useAppDispatch();
 
   return (
-   <div>
-     Hello world
-   </div>
+   <PermanentDrawerLeft/>
   );
 }
