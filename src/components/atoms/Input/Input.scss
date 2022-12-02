@@ -1,0 +1,12 @@
+@import "../../../style/utils/variables";
+.Input {
+  $root: &;
+
+  font-size: 15px;
+  color: $primary-color;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  border: 1px solid $primary-color;
+}

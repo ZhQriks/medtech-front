@@ -1,0 +1,49 @@
+@import "../../../style/utils/variables";
+
+.Button {
+  $root: &;
+
+  font-size: 24px;
+  color: $white-color;
+  font-weight: 600;
+  padding: 6px 32px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+
+  &_primary {
+    background: $orange;
+    color: $white-color;
+    &:hover,
+    &:focus {
+      background: #de5342;
+      color: $white-color;
+    }
+
+    &#{$root}_outline {
+      color: $orange;
+      background: transparent;
+      padding: 6px 32px;
+      margin-right: 25px;
+
+      border: 3px solid $orange;
+      &:hover,
+      &:focus {
+        background: unset;
+        border-color: #de5342;
+        color: #de5342;
+      }
+    }
+    &#{$root}_gradient {
+      font-size: 28px;
+      background: $orange;
+      box-shadow: 0 7px 150px rgba(18, 18, 18, 0.15);
+      padding: 20px 135px;
+
+      &:hover,
+      &:focus {
+        background: linear-gradient(92deg, #dc5646 -4%, #d58942 107%);
+        color: $white-color;
+      }
+    }
+  }
+}
