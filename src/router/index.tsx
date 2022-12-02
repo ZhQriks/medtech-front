@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import IndexPage from "../pages/Home";
-import LoginPage from "../pages/Login";
 import NotFoundPage from "../pages/NotFound";
 export interface IRouteProps {
   path: string;
@@ -32,6 +31,6 @@ export const publicRoutes: IRouteProps[] = [
   },
   {
     path: ROUTE_LOGIN,
-    element: <LoginPage />,
+    element: <div>Login Page</div>,
   },
 ];
