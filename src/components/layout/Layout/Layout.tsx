@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 
 import "./Layout.scss";
 import useBem from "../../../app/hooks/useBem";
+import PermanentDrawerLeft from "../SideBar/SideBar";
 
 interface ILayoutProps {
   children?: React.ReactNode;
@@ -13,8 +14,7 @@ export default function Layout(props: ILayoutProps) {
 
   return (
     <div className={bemBlock()}>
-      <Header />
-      {props.children}
+      <PermanentDrawerLeft>{props.children}</PermanentDrawerLeft>
     </div>
   );
 }
