@@ -16,7 +16,6 @@ import { register } from "../../../features/auth/actions";
 import { useFormik } from "formik";
 import useNotify, { NotificationStatuses } from "../../../app/hooks/useNotify";
 import { useNavigate } from "react-router-dom";
-import { Label } from "@mui/icons-material";
 import {
   useGetAllCitiesQuery,
   useGetAllClinicsQuery,
@@ -24,23 +23,11 @@ import {
 } from "../../../features/all.api";
 
 export default function RegisterPage() {
-  const {
-    currentData: citiesData,
-    isLoading: isCitiesLoading,
-    refetch: citiesRefetch,
-  } = useGetAllCitiesQuery();
+  const { currentData: citiesData } = useGetAllCitiesQuery();
 
-  const {
-    currentData: clinicsData,
-    isLoading: isClinicsLoading,
-    refetch: clinicsRefetch,
-  } = useGetAllClinicsQuery();
+  const { currentData: clinicsData } = useGetAllClinicsQuery();
 
-  const {
-    currentData: specializationsData,
-    isLoading: isSpecializationsLoading,
-    refetch: specializationsRefetch,
-  } = useGetAllSpecializationsQuery();
+  const { currentData: specializationsData } = useGetAllSpecializationsQuery();
 
   const { isPhone } = useScreen();
   const { showNotification } = useNotify();

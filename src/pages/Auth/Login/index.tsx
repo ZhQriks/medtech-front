@@ -32,7 +32,6 @@ export default function LoginPage() {
     onSubmit: (values: any) => {
       dispatch(login(values.yin, values.password))
         .then((res: any) => {
-          console.log(res);
           showNotification({
             type: NotificationStatuses.SUCCESS,
             title: "Успешно!",
