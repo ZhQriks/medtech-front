@@ -1,49 +1,41 @@
 import React from "react";
 import useBem from "../../../app/hooks/useBem";
 
-import "./Button.scss";
+import { Button as MuiButton } from "@mui/material";
 
 interface IButtonProps {
   label: string;
-  color: "primary" | "secondary" | "success" | "danger" | "warning";
-  outline: boolean;
-  className: string;
+  color: "primary" | "secondary";
+  outline?: boolean;
   onClick?: () => void;
-  gradient: boolean;
-  customSize?: true;
-  size?: string;
-  customHeight?: true;
-  height?: string;
+  submit?: boolean;
 }
 
 function Button(props: IButtonProps) {
   const { bem, bemBlock } = useBem("Button");
   return (
-    <button
-      style={{
-        width: props.customSize ? props.size : "",
-        height: props.customHeight ? props.height : "",
+    <MuiButton
+      variant={props.outline ? "outlined" : "contained"}
+      color={props.color}
+      sx={{
+        boxShadow: "none",
+        textTransform: "none",
+        color: "#FFFFFF",
+        fontSize: "18px",
+        borderRadius: "18px",
       }}
-      className={bem(
-        bemBlock({
-          [props.color]: true,
-          outline: props.outline,
-          gradient: props.gradient,
-        }),
-        props.className
-      )}
+      size="large"
       onClick={props.onClick}
+      type={props.submit ? "submit" : "button"}
     >
       {props.label}
-    </button>
+    </MuiButton>
   );
 }
 
 Button.defaultProps = {
   outline: false,
-  color: "primary",
-  className: "",
-  gradient: false,
+  submit: false,
 };
 
 export default Button;

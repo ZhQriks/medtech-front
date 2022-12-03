@@ -6,14 +6,15 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { Divider, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ROUTE_PROFILE, ROUTE_ROOT, ROUTE_APPOINTMENTS } from "../../../router";
+import { ROUTE_PROFILE, ROUTE_ROOT, ROUTE_APPOINTMENTS, ROUTE_LOGIN } from "../../../router";
 import React, { useState } from "react";
 import useScreen from "../../../app/hooks/useScreen";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const drawerWidth = 300;
 
 export default function PermanentDrawerLeft(props: any) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { isDesktop } = useScreen();
   const { window } = props;
@@ -34,6 +35,10 @@ export default function PermanentDrawerLeft(props: any) {
     {
       label: "Медицинская запись",
       route: ROUTE_APPOINTMENTS,
+    },
+    {
+      label: "Логин",
+      route: ROUTE_LOGIN,
     },
   ];
 
@@ -133,24 +138,26 @@ export default function PermanentDrawerLeft(props: any) {
       >
         {drawer}
       </Drawer>
-      <aside>
-        <Drawer
-          open={mobileOpen}
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            display: { sm: "none", xs: "none", md: "block" },
-            "& .MuiDrawer-paper": {
+      {location.pathname !== "/login" && location.pathname !== "/register" && (
+        <aside>
+          <Drawer
+            open={mobileOpen}
+            sx={{
               width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
-          variant="permanent"
-          anchor="left"
-        >
-          {drawer}
-        </Drawer>
-      </aside>
+              flexShrink: 0,
+              display: { sm: "none", xs: "none", md: "block" },
+              "& .MuiDrawer-paper": {
+                width: drawerWidth,
+                boxSizing: "border-box",
+              },
+            }}
+            variant="permanent"
+            anchor="left"
+          >
+            {drawer}
+          </Drawer>
+        </aside>
+      )}
       <Box>{props.children}</Box>
     </Box>
   );

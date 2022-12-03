@@ -1,1 +1,1 @@
-export const APP_BACKEND_URL = "http://api.galam.life:4040/api/v1";
+export const APP_BACKEND_URL = "https://damumed.herokuapp.com/api/";
