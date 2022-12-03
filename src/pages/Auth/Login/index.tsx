@@ -64,7 +64,7 @@ export default function LoginPage() {
     >
       <Box
         width={isDesktop ? "35%" : "90%"}
-        height={isDesktop ? "45%" : "50%"}
+        height={isDesktop ? "50%" : "50%"}
         bgcolor="#FFFFFF"
         boxShadow="0px 4px 15px rgba(14, 159, 124, 0.3)"
         borderRadius="20px"

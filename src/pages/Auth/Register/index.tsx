@@ -95,7 +95,7 @@ export default function RegisterPage() {
     >
       <Box
         width={isDesktop ? "35%" : "95%"}
-        height={isDesktop ? "70%" : "88%"}
+        height={isDesktop ? "75%" : "88%"}
         bgcolor="#FFFFFF"
         boxShadow="0px 4px 15px rgba(14, 159, 124, 0.3)"
         borderRadius="20px"

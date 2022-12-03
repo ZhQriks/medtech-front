@@ -145,7 +145,7 @@ export default function PermanentDrawerLeft(props: any) {
         sx={{
           ml: 2,
           mt: 2,
-          display: { sm: "block", xs: "block", md: "none" },
+          display: { sm: "block", xs: "block", md: "block", lg: "none" },
         }}
       >
         <Box sx={{ width: "100%" }}>
@@ -183,7 +183,7 @@ export default function PermanentDrawerLeft(props: any) {
             sx={{
               width: drawerWidth,
               flexShrink: 0,
-              display: { sm: "none", xs: "none", md: "block" },
+              display: { sm: "none", xs: "none", md: "none", lg: "block" },
               "& .MuiDrawer-paper": {
                 width: drawerWidth,
                 boxSizing: "border-box",
