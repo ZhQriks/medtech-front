@@ -6,7 +6,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { Divider, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ROUTE_PROFILE, ROUTE_ROOT } from "../../../router";
+import { ROUTE_PROFILE, ROUTE_ROOT, ROUTE_APPOINTMENTS } from "../../../router";
 import React, { useState } from "react";
 import useScreen from "../../../app/hooks/useScreen";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ export default function PermanentDrawerLeft(props: any) {
     },
     {
       label: "Медицинская запись",
-      route: ROUTE_ROOT,
+      route: ROUTE_APPOINTMENTS,
     },
   ];
 
