@@ -6,10 +6,20 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { Divider, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ROUTE_PROFILE, ROUTE_ROOT, ROUTE_APPOINTMENTS, ROUTE_LOGIN } from "../../../router";
+import {
+  ROUTE_PROFILE,
+  ROUTE_ROOT,
+  ROUTE_APPOINTMENTS,
+  ROUTE_LOGIN,
+  ROUTE_CREATE_APPOINTMENT,
+} from "../../../router";
 import React, { useState } from "react";
 import useScreen from "../../../app/hooks/useScreen";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "../../../app/hooks/useSelector";
+import { selectIsAuthenticated } from "../../../services/auth/auth.selectors";
+import { logout } from "../../../features/auth/actions";
+import { useDispatch } from "../../../app/hooks/useDispatch";
 const drawerWidth = 300;
 
 export default function PermanentDrawerLeft(props: any) {
@@ -17,7 +27,10 @@ export default function PermanentDrawerLeft(props: any) {
   const location = useLocation();
 
   const { isDesktop } = useScreen();
+  const dispatch = useDispatch();
+
   const { window } = props;
+  const isAuthorizedUser = useSelector((state) => selectIsAuthenticated(state));
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -29,16 +42,12 @@ export default function PermanentDrawerLeft(props: any) {
       route: ROUTE_ROOT,
     },
     {
-      label: "Записи на прием",
-      route: ROUTE_PROFILE,
+      label: "Сделать Запись",
+      route: ROUTE_CREATE_APPOINTMENT,
     },
     {
       label: "Медицинская запись",
       route: ROUTE_APPOINTMENTS,
-    },
-    {
-      label: "Логин",
-      route: ROUTE_LOGIN,
     },
   ];
 
@@ -46,6 +55,37 @@ export default function PermanentDrawerLeft(props: any) {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  const getListItem = (label: string, route: string, index: any) => {
+    return (
+      <ListItem key={index} disablePadding>
+        <ListItemButton
+          onClick={() => navigate(route)}
+          color="primary"
+          sx={{
+            ":hover": {
+              backgroundColor: "#DDFFF2",
+            },
+            ":visited": {
+              backgroundColor: "#DDFFF2",
+            },
+            px: "24px",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: 600, fontSize: "20px", lineHeight: 1.6 }}
+          >
+            {label}
+          </Typography>
+        </ListItemButton>
+      </ListItem>
+    );
   };
 
   const drawer = (
@@ -73,30 +113,28 @@ export default function PermanentDrawerLeft(props: any) {
         </Typography>
       </Box>
       <List>
-        {Links.map((link, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton
-              onClick={() => navigate(link.route)}
-              color="primary"
-              sx={{
-                ":hover": {
-                  backgroundColor: "#DDFFF2",
-                },
-                ":visited": {
-                  backgroundColor: "#DDFFF2",
-                },
-                px: "24px",
-              }}
-            >
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: 600, fontSize: "20px", lineHeight: 1.6 }}
-              >
-                {link.label}
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {Links.map((link, index) => getListItem(link.label, link.route, index))}
+
+        <ListItemButton
+          onClick={handleLogout}
+          color="primary"
+          sx={{
+            ":hover": {
+              backgroundColor: "#DDFFF2",
+            },
+            ":visited": {
+              backgroundColor: "#DDFFF2",
+            },
+            px: "24px",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: 600, fontSize: "20px", lineHeight: 1.6 }}
+          >
+            Выйти
+          </Typography>
+        </ListItemButton>
       </List>
     </Box>
   );

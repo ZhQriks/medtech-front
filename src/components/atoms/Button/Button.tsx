@@ -1,7 +1,8 @@
 import React from "react";
 import useBem from "../../../app/hooks/useBem";
 
-import { Button as MuiButton } from "@mui/material";
+import { Box, Button as MuiButton } from "@mui/material";
+import useScreen from "../../../app/hooks/useScreen";
 
 interface IButtonProps {
   label: string;
@@ -12,6 +13,8 @@ interface IButtonProps {
 }
 
 function Button(props: IButtonProps) {
+  const { isPhone, isDesktop } = useScreen();
+
   const { bem, bemBlock } = useBem("Button");
   return (
     <MuiButton
@@ -28,7 +31,7 @@ function Button(props: IButtonProps) {
       onClick={props.onClick}
       type={props.submit ? "submit" : "button"}
     >
-      {props.label}
+      <Box fontSize={isPhone ? "14px" : "18px"}>{props.label}</Box>
     </MuiButton>
   );
 }

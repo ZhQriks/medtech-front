@@ -6,7 +6,7 @@ class AuthService {
       .post(APP_BACKEND_URL + "doctors/login", { uin, password })
       .then((response) => {
         console.log(response.data);
-        if (response.data.access_token) {
+        if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
         return response.data;

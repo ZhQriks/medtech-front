@@ -29,7 +29,7 @@ export default function RegisterPage() {
 
   const { currentData: specializationsData } = useGetAllSpecializationsQuery();
 
-  const { isPhone } = useScreen();
+  const { isPhone, isDesktop } = useScreen();
   const { showNotification } = useNotify();
   const navigate = useNavigate();
 
@@ -94,8 +94,8 @@ export default function RegisterPage() {
       }}
     >
       <Box
-        width="45%"
-        height="70%"
+        width={isDesktop ? "35%" : "95%"}
+        height={isDesktop ? "70%" : "88%"}
         bgcolor="#FFFFFF"
         boxShadow="0px 4px 15px rgba(14, 159, 124, 0.3)"
         borderRadius="20px"
@@ -297,7 +297,11 @@ export default function RegisterPage() {
                 justifyContent: "space-between",
               }}
             >
-              <Button label="Вернуться" color="primary" />
+              <Button
+                label="Логин?"
+                color="primary"
+                onClick={() => navigate("/login")}
+              />
               <Button
                 label="Зарегестрироваться"
                 color="secondary"

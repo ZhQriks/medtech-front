@@ -63,7 +63,7 @@ export default function LoginPage() {
       }}
     >
       <Box
-        width={isDesktop ? "35%" : "85%"}
+        width={isDesktop ? "35%" : "90%"}
         height={isDesktop ? "45%" : "50%"}
         bgcolor="#FFFFFF"
         boxShadow="0px 4px 15px rgba(14, 159, 124, 0.3)"
@@ -131,10 +131,15 @@ export default function LoginPage() {
               width="100%"
               sx={{
                 display: "flex",
-                justifyContent: "end",
+                justifyContent: "space-between",
               }}
             >
-              <Button label="Логин" color="primary" submit={true} />
+              <Button
+                label="Создать?"
+                color="primary"
+                onClick={() => navigate("/register")}
+              />
+              <Button label="Отправить" color="secondary" submit={true} />
             </Box>
 
             {/*Here ends the form*/}
