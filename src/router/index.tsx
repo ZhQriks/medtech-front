@@ -2,6 +2,8 @@ import * as React from "react";
 
 import IndexPage from "../pages/Home";
 import NotFoundPage from "../pages/NotFound";
+import RegisterPage from "../pages/Auth/Register";
+import LoginPage from "../pages/Auth/Login";
 export interface IRouteProps {
   path: string;
   element: React.ReactNode;
@@ -30,7 +32,11 @@ export const publicRoutes: IRouteProps[] = [
     element: <NotFoundPage />,
   },
   {
+    path: ROUTE_REGISTER,
+    element: <RegisterPage />,
+  },
+  {
     path: ROUTE_LOGIN,
-    element: <div>Login Page</div>,
+    element: <LoginPage />,
   },
 ];

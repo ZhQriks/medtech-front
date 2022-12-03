@@ -18,61 +18,48 @@ export const clearMessage = () => ({
 });
 
 export const register =
-    (
-        email: string,
-        roleId: number,
-        password: string,
-        confirm: string,
-    ) =>
-        (dispatch: any) => {
-          return AuthService.register(email, roleId, password, confirm).then(
-              (response:any) => {
-                dispatch({
-                  type: REGISTER_SUCCESS,
-                });
-                dispatch({
-                  type: SET_MESSAGE,
-                  payload: response.data.message,
-                });
-                return Promise.resolve();
-              },
-              (error:any) => {
-                const message =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-                dispatch({
-                  type: REGISTER_FAIL,
-                });
-                dispatch({
-                  type: SET_MESSAGE,
-                  payload: message,
-                });
-                return Promise.reject();
-              }
-          );
-        };
-export const login = (username: string, password: string) => (dispatch: any) => {
-  return AuthService.login(username, password).then(
-      (data:any) => {
+  (
+    uin: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    locationId: number,
+    email: string,
+    phoneNumber: string,
+    clinicId: number,
+    specializationTypeId: number
+  ) =>
+  (dispatch: any) => {
+    return AuthService.register(
+      uin,
+      password,
+      firstName,
+      lastName,
+      locationId,
+      email,
+      phoneNumber,
+      clinicId,
+      specializationTypeId
+    ).then(
+      (response: any) => {
         dispatch({
-          type: LOGIN_SUCCESS,
-          payload: { user: data },
+          type: REGISTER_SUCCESS,
+        });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: response.data.message,
         });
         return Promise.resolve();
       },
-      (error:any) => {
+      (error: any) => {
         const message =
-            (error.response &&
-                error.response.data &&
-                error.response.data.message) ||
-            error.message ||
-            error.toString() ||
-            "Login failed";
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
         dispatch({
-          type: LOGIN_FAIL,
+          type: REGISTER_FAIL,
         });
         dispatch({
           type: SET_MESSAGE,
@@ -80,6 +67,34 @@ export const login = (username: string, password: string) => (dispatch: any) => 
         });
         return Promise.reject();
       }
+    );
+  };
+export const login = (uin: string, password: string) => (dispatch: any) => {
+  return AuthService.login(uin, password).then(
+    (data: any) => {
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: { user: data },
+      });
+      return Promise.resolve();
+    },
+    (error: any) => {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString() ||
+        "Login failed";
+      dispatch({
+        type: LOGIN_FAIL,
+      });
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+      return Promise.reject();
+    }
   );
 };
 export const logout = () => (dispatch: any) => {
