@@ -3,7 +3,7 @@ import { APP_BACKEND_URL } from "../../constants/constants";
 class AuthService {
   login(uin: string, password: string) {
     return axios
-      .post(APP_BACKEND_URL + "/doctors/login", { uin, password })
+      .post(APP_BACKEND_URL + "doctors/login", { uin, password })
       .then((response) => {
         console.log(response.data);
         if (response.data.access_token) {
@@ -26,7 +26,7 @@ class AuthService {
     clinicId: number,
     specializationTypeId: number
   ) {
-    return axios.post(APP_BACKEND_URL + "/doctors/register", {
+    return axios.post(APP_BACKEND_URL + "doctors/register", {
       uin,
       password,
       firstName,
