@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import useScreen from "../../app/hooks/useScreen";
 import PermanentDrawerLeft from "../../components/layout/SideBar/SideBar";
 import { Container, Box, Typography } from '@mui/material';
-import background from '../../../public/images/backgroundAppointments.svg'
 import styled from '@emotion/styled'
 
 export default function Appointments() {

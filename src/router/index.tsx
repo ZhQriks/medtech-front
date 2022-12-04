@@ -28,7 +28,7 @@ export const publicRoutes: IRouteProps[] = [
   {
     path: ROUTE_ROOT,
     element: <IndexPage />,
-    isAuthRoute: true,
+    isAuthRoute: false,
   },
   {
     path: ROUTE_APPOINTMENTS,
