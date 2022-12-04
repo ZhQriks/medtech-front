@@ -16,7 +16,15 @@ export default function Home() {
   const dispatch = useAppDispatch();
 
   return (
-    <Container sx={{backgroundImage: `url(${Image})`, width: "100vw", height: "100vh"}}>
+    <Box
+      sx={{
+        backgroundImage: `url(${Image})`,
+        backgroundRepeat: isPhone ? "repeat" : "no-repeat",
+        backgroundSize: isPhone ? "auto" : "cover",
+        height: "100vh",
+        width: isDesktop ? "84vw" : "100vw",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -45,22 +53,32 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           paddingTop: "35px",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
         <Typography
-
           variant="h1"
           color="White"
           align="center"
-          sx={{ my: 4, fontWeight: 600, fontSize: "50px",}}
+          sx={{ my: 4, fontWeight: 600, fontSize: "50px" }}
         >
-          Используйте современные <br/> методы формализации
+          Используйте современные <br /> методы формализации
         </Typography>
-        <button onClick={() => navigate(ROUTE_CREATE_APPOINTMENT)} style={{ color: "black", fontWeight: 600, backgroundColor: "white", width: "130px", height: "48px", boxShadow: "0px 4px 10px rgba(9, 119, 87, 0.3)", borderRadius: "25px"}}>
+        <button
+          onClick={() => navigate(ROUTE_CREATE_APPOINTMENT)}
+          style={{
+            color: "black",
+            fontWeight: 600,
+            backgroundColor: "white",
+            width: "130px",
+            height: "48px",
+            boxShadow: "0px 4px 10px rgba(9, 119, 87, 0.3)",
+            borderRadius: "25px",
+          }}
+        >
           Начать
         </button>
       </Box>
-    </Container>
-  )
+    </Box>
+  );
 }

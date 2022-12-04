@@ -234,7 +234,7 @@ export default function CreateAppoinment() {
             текста и его проеоброзования.
           </DialogContentText>
           {isNoteSubmitIsLoading ? (
-            <Box display="flex" justifyContent="center">
+            <Box display="flex" justifyContent="center" marginTop="40px">
               <CircularProgress />
             </Box>
           ) : (

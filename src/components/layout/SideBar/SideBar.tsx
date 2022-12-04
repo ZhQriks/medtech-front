@@ -38,7 +38,7 @@ export default function PermanentDrawerLeft(props: any) {
   const displaySideBar: string = isDesktop ? "flex" : "block";
   const Links = [
     {
-      label: "Мой график",
+      label: "Главная Страница",
       route: ROUTE_ROOT,
     },
     {
@@ -46,7 +46,7 @@ export default function PermanentDrawerLeft(props: any) {
       route: ROUTE_CREATE_APPOINTMENT,
     },
     {
-      label: "Медицинская запись",
+      label: "Медицинская Запись",
       route: ROUTE_APPOINTMENTS,
     },
   ];
