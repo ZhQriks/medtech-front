@@ -12,6 +12,7 @@ import {
   Grid,
   FormLabel,
   CircularProgress,
+  Rating,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useAppDispatch } from "../../app/hooks";
@@ -227,11 +228,11 @@ export default function CreateAppoinment() {
         maxWidth={isDesktop ? "lg" : "sm"}
         fullWidth={true}
       >
-        <DialogTitle>Результат форматирования</DialogTitle>
+        <DialogTitle>Результат форматирования. Все ли правльно?</DialogTitle>
         <DialogContent>
           <DialogContentText>
             *Используются алгортимы исскуственного интеллекта для форматирования
-            текста и его проеоброзования.
+            текста и его проеоброзования. Дайте оценку, и она станет еще лучше!
           </DialogContentText>
           {isNoteSubmitIsLoading ? (
             <Box display="flex" justifyContent="center" marginTop="40px">
@@ -280,12 +281,23 @@ export default function CreateAppoinment() {
         <DialogActions
           sx={{ width: "100%", display: "flex", justifyContent: "between" }}
         >
+          <Rating
+            name="rating"
+            defaultValue={4}
+            size={isDesktop ? "large" : "medium"}
+            sx={{ marginRight: isDesktop ? "120px" : "0" }}
+          />
           <Button
             color="primary"
             label="Подтвердить"
-            onClick={handleModalClose}
+            onClick={() => {
+              handleModalClose();
+              showNotification({
+                type: NotificationStatuses.SUCCESS,
+                title: "Вы улучшаете продукт!",
+              });
+            }}
           />
-          <Button color="secondary" label="Close" onClick={handleModalClose} />
         </DialogActions>
       </Dialog>
     </Box>
