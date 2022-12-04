@@ -96,6 +96,9 @@ export default function CreateAppoinment() {
     },
   });
 
+  const getDialogText = (text: any) => {
+    return text.split(".").join(".\r");
+  };
   const getDialogTextBox = (label: string, value: any, onChange: any) => {
     return (
       <>
@@ -107,7 +110,7 @@ export default function CreateAppoinment() {
           multiline
           label={label}
           InputProps={{
-            rows: isDesktop ? 8 : 6,
+            rows: isDesktop ? 10 : 6,
           }}
           sx={{
             [`& fieldset`]: {
@@ -115,7 +118,7 @@ export default function CreateAppoinment() {
             },
           }}
           name={value}
-          value={value}
+          value={getDialogText(value)}
           onChange={onChange}
         />
       </>
