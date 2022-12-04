@@ -7,8 +7,8 @@ export const allApi = createApi({
     baseUrl: APP_BACKEND_URL,
     prepareHeaders: (headers) => {
       const user = JSON.parse(localStorage.getItem("user") as string);
-      if (user && user.access_token) {
-        headers.set("Authorization", `Bearer ${user.access_token}`);
+      if (user && user.token) {
+        headers.set("Authorization", `Bearer ${user.token}`);
       }
       return headers;
     },
@@ -23,6 +23,13 @@ export const allApi = createApi({
     getAllSpecializations: builder.query<any, void>({
       query: () => `specializationTypes`,
     }),
+    submitDoctorNote: builder.mutation({
+      query: (body) => ({
+        url: "notes",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -30,4 +37,5 @@ export const {
   useGetAllCitiesQuery,
   useGetAllClinicsQuery,
   useGetAllSpecializationsQuery,
+  useSubmitDoctorNoteMutation,
 } = allApi;
