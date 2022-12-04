@@ -1,15 +1,17 @@
 import { Container } from "@mui/system";
 import clsx from "clsx";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import useScreen from "../../app/hooks/useScreen";
 import PermanentDrawerLeft from "../../components/layout/SideBar/SideBar";
 import Image from "../../../public/images/backgrounds.png";
 import { Box, Button, ButtonBase, Typography } from "@mui/material";
+import { ROUTE_CREATE_APPOINTMENT } from "../../router";
 
 export default function Home() {
   const { isPhone, isTablet, isDesktop } = useScreen();
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
 
@@ -55,7 +57,7 @@ export default function Home() {
         >
           Используйте современные <br/> методы формализации
         </Typography>
-        <button style={{ color: "black", fontWeight: 600, backgroundColor: "white", width: "130px", height: "48px", boxShadow: "0px 4px 10px rgba(9, 119, 87, 0.3)", borderRadius: "25px"}}>
+        <button onClick={() => navigate(ROUTE_CREATE_APPOINTMENT)} style={{ color: "black", fontWeight: 600, backgroundColor: "white", width: "130px", height: "48px", boxShadow: "0px 4px 10px rgba(9, 119, 87, 0.3)", borderRadius: "25px"}}>
           Начать
         </button>
       </Box>
