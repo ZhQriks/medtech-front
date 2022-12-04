@@ -6,6 +6,7 @@ import useScreen from "../../app/hooks/useScreen";
 import PermanentDrawerLeft from "../../components/layout/SideBar/SideBar";
 import { Container, Box, Typography } from '@mui/material';
 import styled from '@emotion/styled'
+import Image from "../../../public/images/backgrounds.png";
 
 export default function Appointments() {
   const { isPhone, isTablet, isDesktop } = useScreen();
@@ -47,8 +48,8 @@ export default function Appointments() {
   `
 
   return (
-    <Container maxWidth="sm" disableGutters={true}>
-        <Box sx={{background: `url(${background})`,	backgroundRepeat: "no-repeat", backgroundSize: "100vw, 100vh", width: "100vw", height: "100vh"}}>
+    <Container sx={{backgroundImage: `url(${Image})`, width: "100vw", height: "100vh"}}>
+        <Box>
             <PaddingBox>
             <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: ''}}>
                 <Typography 
